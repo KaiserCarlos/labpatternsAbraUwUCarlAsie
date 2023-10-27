@@ -12,7 +12,7 @@ import domain.Symptom;
 
 import javax.swing.JLabel;
 
-public class PacientObserverGUI extends JFrame{
+public class PacientObserverGUI extends JFrame implements Observer{
 
 	private JPanel contentPane;
 	private final JLabel symptomLabel = new JLabel("");
@@ -20,7 +20,8 @@ public class PacientObserverGUI extends JFrame{
 	/**
 	 * Create the frame.
 	 */
-	public PacientObserverGUI() {
+	public PacientObserverGUI(Observable pacient) {
+		pacient.addObserver(this);
 		setTitle("Pacient symptoms");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 100, 200, 300);
@@ -32,6 +33,12 @@ public class PacientObserverGUI extends JFrame{
 		contentPane.add(symptomLabel);
 		symptomLabel.setText("Still no symptoms");
 		this.setVisible(true);
+	}
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
